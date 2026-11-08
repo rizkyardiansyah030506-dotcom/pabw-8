@@ -21,11 +21,12 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+       User::create([
+    'name'     => $data['name'],
+    'email'    => $data['email'],
+    'password' => Hash::make($data['password']),
+    'role'     => 'petugas',
+]);
 
         return redirect()->route('login')
             ->with('success', 'Registrasi berhasil. Silakan login.');

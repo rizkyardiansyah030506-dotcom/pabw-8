@@ -31,3 +31,10 @@ Route::post('/logout', [LoginController::class, 'destroy'])
 
 Route::get('/profil', fn () => view('auth.profil'))
     ->middleware('auth')->name('profil');
+    Route::middleware(['auth', 'admin'])->group(function () {
+
+Route::get('/admin', function () {
+     return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+});
